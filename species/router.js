@@ -32,10 +32,10 @@ router.post(
   async (request, response, next) => { // handler callback
     try {
       // decide what part of the body you want based on the model fields
-      const { name, age } = request.body
+      const { name, age, familyId } = request.body
 
       // make entity object
-      const entity = { name, age }
+      const entity = { name, age, familyId }
 
       // add a row to the database using a promise
       const species = await Species.create(entity)
@@ -87,7 +87,7 @@ router.put(
       // update an existing database table using a promise
       const species = await Species.update(
         request.body,
-        { where }
+        { where } // omit the options object to change all rows in the table
       )
 
       // send the number of changed rows as a response

@@ -4,6 +4,9 @@ const express = require('express')
 // import the model to connect to the database
 const Family = require('./model')
 
+// import the related model to include it
+const Species = require('../species/model')
+
 // destructure the router factory
 const { Router } = express
 
@@ -18,7 +21,13 @@ router.get(
   async (request, response, next) => { // handler callback
     try {
       // get all families from database using a promise
-      const families = await Family.findAll() 
+      const families = await Family.findAll(
+        { // options object
+          include: [ // include always takes an array
+            Species // Family has many Species
+          ]
+        }
+      ) 
 
       // send the array as a response
       response.send(families) 
@@ -61,7 +70,14 @@ router.get(
       const { id } = request.params
 
       // read single family by id using a promise
-      const family = await Family.findByPk(id)
+      const family = await Family.findByPk(
+        id, // the id of the target record
+        { // options object
+          include: [ // include takes an array
+            Species
+          ]
+        }
+      )
 
       // read single entity using where
       // const family = await Family.findOne({ where: { id } })

@@ -51,3 +51,10 @@ app.listen( port, confirm)
 // Family - Grass
 //    Species - Wheat
 //    Species - Flax
+
+// RELATIONS
+
+// Species belongs to family
+// There are many species in each family
+// A family is made of species
+// Each family has many species
