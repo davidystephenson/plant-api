@@ -1,6 +1,9 @@
 // import express
 const express = require('express')
 
+// import cors
+const cors = require('cors')
+
 // make server
 const app = express()
 
@@ -9,6 +12,10 @@ const familyRouter = require('./family/router')
 
 // import species router
 const speciesRouter = require('./species/router')
+
+// make cors middleware first
+const corsMiddleware = cors()
+app.use(corsMiddleware)
 
 // make body parser middleware
 // body parser lets you look at request bodies
