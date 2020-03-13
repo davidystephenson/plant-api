@@ -26,7 +26,7 @@ const databaseUrl = process.env.DATABASE_URL ||
 const db = new Sequelize(databaseUrl);
 
 db
-  .sync({ force: false }) // true will delete everything. false is the default.
+  .sync({ force: true }) // true will delete everything. false is the default.
   .then(() => console.log('Database connect')) // confirm database is working
 
 // db.js only needs to be imported in model files
