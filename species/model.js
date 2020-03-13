@@ -9,7 +9,14 @@ const Species = db.define(
   'species', // model name
   { // fields object
     name: Sequelize.STRING, // text
+    // STRING means 255 characters or less
+    // STRING(x) means x characters or less
+    // TEXT means any length
     age: Sequelize.INTEGER // number
+    // INTEGER means whole numbers (-1, 0, 1, 255)
+    // FLOAT means decimals (0.1, 0.9999, 255.0, 255.9999)
+    
+    // more info here: https://codewithhugo.com/sequelize-data-types-a-practical-guide/
   }
 )
 

@@ -81,17 +81,20 @@ router.put(
 
       // decide where the record you want to change is
       const where = { name }
+      const query = { where }
 
       console.log('request.body test:', request.body)
 
       // update an existing database table using a promise
-      const species = await Species.update(
+      // benefit: only wait for a single slow promise
+      // cost: only get back an array with a count of updated rows
+      const countArray = await Species.update(
         request.body,
-        { where } // omit the options object to change all rows in the table
+        query // omit the queryobject to change all rows in the table
       )
 
       // send the number of changed rows as a response
-      response.send(species)
+      response.send(countArray)
     } catch (error) {
       next(error)
     }
