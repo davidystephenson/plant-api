@@ -140,6 +140,8 @@ router.put(
       // this data to the user
       const family = await Family.findByPk(id)
 
+      // in this endpoint, we expect the body
+      // of the request to be an 'update rename object
       console.log('request.body test:', request.body)
       console.log('family test:', family.dataValues)
 
