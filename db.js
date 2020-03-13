@@ -23,7 +23,7 @@ const databaseUrl = process.env.DATABASE_URL ||
 // without Heroku, you woudl just need
 // const databaseUrl = 'postgres://postgres:password@localhost:5432/postgres'
 
-const db = new Sequelize(databaseUrl)
+const db = new Sequelize(databaseUrl);
 
 db
   .sync({ force: false }) // true will delete everything. false is the default.

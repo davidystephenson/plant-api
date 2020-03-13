@@ -19,7 +19,8 @@ const Family = db.define(
       type: Sequelize.STRING, 
       defaultValue: 'everywhere',
       allowNull: false // false === required, true === optional
-    }
+    },
+    age: Sequelize.INTEGER
   }
   // don't add a third argument that defines an options object for now
   // timestamps can be helpful and default table names should be fine
